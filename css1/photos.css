@@ -1,0 +1,21 @@
+.header.header__article {
+	height: 400px;
+}
+
+.header__article .header__texture {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;left: 0;
+    background: url('../img/image3.jpg') center no-repeat;
+    background-size: cover;
+    z-index: 1;
+    opacity: 0.5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+

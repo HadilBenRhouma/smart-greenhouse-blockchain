@@ -1,0 +1,8 @@
+{"require": {
+  "ethereum/ethereum-php": "^0.7"
+},
+"require-dev": {
+  "digitaldonkey/ethereum-php": "dev-master"
+},
+"minimum-stability": "dev"}
+

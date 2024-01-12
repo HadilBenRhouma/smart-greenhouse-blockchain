@@ -1,0 +1,60 @@
+.header.header__article {
+	height: 400px;
+}
+
+.header__article .header__texture {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;left: 0;
+    background: url('../img/image6.jpg') center no-repeat;
+    background-size: cover;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.article__view-container {
+    width: 60%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.article__view-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #f39c12;
+    margin: 0;
+}
+
+.article__view-content {
+    padding-top: 10px;
+    text-align: justify;
+    font-weight: 300;
+    padding-bottom: 1px;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.article__view-photo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.video-responsive { 
+    overflow:hidden;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom:56.25%;
+    position:relative; height:0;
+}
+
+.video-responsive iframe { left:0; 
+    top:0; 
+    height:100%; 
+    width:100%; 
+    position:absolute;}

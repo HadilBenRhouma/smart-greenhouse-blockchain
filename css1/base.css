@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+body, html {
+	margin: 0;
+	padding: 0;
+    font-family: 'Nunito';
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    position: relative;
+    z-index: 999;
+    color: black;
+}
+
+.h__slogan--btn {
+    border: 2px solid #e67e22;
+    transition: all 0.3s ease-in-out;
+}
+
+.h__slogan--btn:hover {
+    color: #e67e22;
+    background: transparent;
+}
