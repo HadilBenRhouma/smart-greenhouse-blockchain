@@ -8,6 +8,14 @@ School project (ENIS, 2023–2024): greenhouse sensor readings — air humidity,
 ![ethers.js](https://img.shields.io/badge/ethers.js-2535a0?style=flat-square&logo=ethereum&logoColor=white)
 ![Web3.js](https://img.shields.io/badge/Web3.js-F16822?style=flat-square&logo=web3dotjs&logoColor=white)
 
+## Screenshots
+
+| Sensor measurements | Marketplace |
+|---|---|
+| ![Greenhouse measurement table: temperature, air and soil humidity over time](docs/screenshots/sensor-measurements.jpg) | ![Buyer view with discounted crops](docs/screenshots/marketplace.jpg) |
+
+<p align="center"><img src="docs/screenshots/home.jpg" alt="Home page of the farm marketplace" width="600"></p>
+
 ## How it works
 
 ```
