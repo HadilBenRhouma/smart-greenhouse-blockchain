@@ -1,4 +1,11 @@
+# Dépendances (réinstallables avec npm install / composer install)
+node_modules/
 vendor/
+composer.phar
+php-*/
+
+# Secrets
 .env
-workspace.code-workspace
+
 img/
+workspace.code-workspace

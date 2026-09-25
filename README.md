@@ -1,38 +1,62 @@
-# Farm-Auction
-A web application to let farmer auction their crop online.
+# Smart Greenhouse on Blockchain 🌱⛓️
 
-YouTube video explaination: https://youtu.be/3hS-1d5DZK8
+School project (ENIS, 2023–2024): greenhouse sensor readings — air humidity, soil humidity and temperature — are stored in a smart contract so they can't be altered after the fact, and exposed through a farm marketplace web app.
 
-(Filenames are vehicles as it was developed previously for vehicles. Bikes -> Fruits, Cars -> Vegetables).
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+![Solidity](https://img.shields.io/badge/Solidity-363636?style=flat-square&logo=solidity&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![ethers.js](https://img.shields.io/badge/ethers.js-2535a0?style=flat-square&logo=ethereum&logoColor=white)
+![Web3.js](https://img.shields.io/badge/Web3.js-F16822?style=flat-square&logo=web3dotjs&logoColor=white)
 
-## Stakeholders: 
-Buyer, Administrator and Seller (farmer) .
+## How it works
 
-## User: 
-User needs to register and create an account to bid for various crops listed on the website. Each crop has an allotted
-time, after which the crop list expires, and the highest bid wins. Live top bid information can be seen. The buyer also
-needs to deposit certain amount before he can start bidding.
-## Administrator:
-Admin can add, modify and delete the crops listed on the website. He / She can also block a particular user.
-Various crop information such as crop type, soil type, region, state, harvest date, bidding duration, crop images etc,
-should be added. He also accepts payment from the buyer and thus allows him to bid.
-## Seller (farmer):
-Seller also has to register and create an account. He can also add crop, and track the live bids on his crop.
+```
+ Sensors ──► MySQL (measurements) ──► contract.php / ethers.js ──► Smart contract (Sepolia testnet)
+                                                                      │
+                     Farm marketplace (PHP) ◄──── getData(id) ────────┘
+```
 
-We developed this project for Smart India Hackathon, 2020, in ‘agriculture’ domain.
+1. Sensor measurements (air humidity, soil humidity, temperature) are saved in the `measurements` table.
+2. `contract.php` and the scripts in `ethers-alchemy-template-main/` read them and push them to the contract.
+3. The contracts (`contrat.sol` → `SerreIntelligente`, `ContratIntelligent.sol` → `DataStorage`) keep every reading on-chain, so the history is tamper-proof.
+4. The web app shows the data to farmers and buyers.
 
-Domain: Web Development
+## Project structure
 
-Programming language: PHP
+| Path | Content |
+|---|---|
+| `contrat.sol`, `ContratIntelligent.sol` | Solidity smart contracts |
+| `SensorData.json` | Compiled contract ABI |
+| `contract.php`, `ethers-alchemy-template-main/` | Bridge between the database and the blockchain |
+| `admin/`, `farmer/`, `customer/` | Marketplace web app, one folder per role |
+| `auction1.sql` | Database schema and sample data |
+| `docs/` | Project report (`Rapport.pdf`) and presentation |
 
-Scripting language: HTML, CSS, JavaScript
+## Run locally
 
-Database: MySQL.
+Requirements: PHP 8 + MySQL (XAMPP/WAMP works), Node.js.
 
-Still in process! Bugs present.
+```bash
+# 1. Database
+mysql -u root -e "CREATE DATABASE auction1"
+mysql -u root auction1 < auction1.sql
 
+# 2. Secrets
+cp .env.example .env        # then fill in the values
 
+# 3. Blockchain scripts
+npm install
+cd ethers-alchemy-template-main && npm install
+```
 
-Currently developing farmer dashboard, so that farmer can add produce, rather than administrator, and let the administrator rectify, accept or reject the produce added. Also, thinking of some ML integration.
+Then serve the folder with Apache (or `php -S localhost:8000`) and open `index.php`.
 
-Any ideas / suggestions welcome!!
+## Credits
+
+The marketplace part (auctions, farmer / buyer / admin dashboards) is built on top of the open-source
+**Farm-Auction** project made for Smart India Hackathon 2020. The blockchain layer, the sensor data flow
+and the smart contracts were added for this school project.
+
+## Author
+
+**Hadil Ben Rhouma** — [Portfolio](https://portfilio-gules-three.vercel.app/?utm_source=github) · [LinkedIn](https://www.linkedin.com/in/hadil-benrhouma/)
